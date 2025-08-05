@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoHostly – UK STR Management | Effortless Hosting. Superior Returns.</title>
+    
+    <!-- SEO & Social Meta Tags -->
+    <meta name="description" content="CoHostly offers premium Airbnb co-hosting and short-term rental management in the UK. We handle guest comms, dynamic pricing, and STR compliance to scale your business without stress.">
+    <meta property="og:title" content="Cohostly – Effortless Hosting. Superior Returns.">
+    <meta property="og:description" content="Built by real landlords, Cohostly helps UK STR owners grow smarter. Zero stress. More returns.">
+    <meta property="og:image" content="https://www.cohostly.co.uk/social-preview.jpg"> <!-- Replace with your actual domain and image path -->
+    <meta property="og:type" content="website">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"> <!-- Make sure to have a favicon.ico in your root directory -->
+
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-cream': '#FDFBF7',
+                        'brand-near-black': '#1C1C1C',
+                        'brand-gold': '#C9A25B',
+                        'brand-light-grey': '#F5F5F5'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'inter', sans-serif;
+            background-color: #FDFBF7;
+            color: #1C1C1C;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        .header-scrolled {
+            background-color: rgba(253, 251, 247, 0.85);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .btn-primary {
+            background-color: #C9A25B;
+            color: white;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -10px rgba(201, 162, 91, 0.6);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid #E0E0E0;
+            color: #1C1C1C;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            border-color: #C9A25B;
+            color: #C9A25B;
+        }
+        .feature-tab.active {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #E0E0E0;
+            border-radius: 5px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #C9A25B;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #C9A25B;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+        .fade-in-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #mobile-nav {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        #roi-callout {
+            transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-near-black">
+
+    <!-- Hidden SVG Templates for Feature Showcase -->
+    <div id="feature-svg-templates" class="hidden">
+        <template id="svg-pricing">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9A25B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="23"></line><line x1="5" y1="12" x2="1" y2="12"></line><line x1="23" y1="12" x2="19" y2="12"></line><circle cx="12" cy="12" r="2"></circle><path d="M13.86 7.14A9 9 0 1 0 7.14 13.86"></path><path d="M16 8L22 2"></path><polyline points="16 2 22 2 22 8"></polyline></svg>
+        </template>
+        <template id="svg-guest">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9A25B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+        </template>
+        <template id="svg-support">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9A25B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        </template>
+        <template id="svg-maintenance">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9A25B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+        </template>
+    </div>
+
+    <!-- Calendly Modal -->
+    <div id="calendly-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden transition-opacity duration-300 opacity-0">
+        <div class="fixed inset-0 bg-black/50 cursor-pointer" onclick="closeCalendlyModal()"></div>
+        <div role="dialog" class="relative bg-white rounded-2xl shadow-xl w-full max-w-4xl h-[80vh] flex flex-col transition-transform duration-300 transform scale-95">
+            <button onclick="closeCalendlyModal()" class="absolute -top-3 -right-3 h-8 w-8 bg-white rounded-full flex items-center justify-center text-xl text-gray-600 hover:text-brand-gold z-10 shadow-md" aria-label="Close">&times;</button>
+            <div class="w-full h-full rounded-2xl overflow-hidden">
+                <iframe src="https://calendly.com/hello-cohostly/30min" class="w-full h-full border-0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <a href="#" class="text-3xl font-extrabold tracking-tighter text-brand-near-black">CoHostly</a>
+                <!-- Mobile Nav Button -->
+                <div class="md:hidden">
+                    <button id="mobile-nav-toggle" class="p-2 -mr-2" aria-label="Open menu">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+                    </button>
+                </div>
+<title>Cohostly</title>
+<h1>We're launching soon!</h1>
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#services" class="text-gray-600 hover:text-brand-gold transition-colors">Services</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-brand-gold transition-colors">How It Works</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-brand-gold transition-colors">Pricing</a>
+                    <button type="button" class="btn-primary px-5 py-2.5 rounded-lg font-semibold text-sm calendly-trigger">Book an Intro Call</button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Nav Panel -->
+        <div id="mobile-nav" class="fixed inset-0 z-40 bg-brand-cream p-6 transform translate-x-full md:hidden opacity-0">
+            <div class="flex justify-end items-center h-20 px-0">
+                 <button id="mobile-nav-close" class="p-2 -mr-2" aria-label="Close menu">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <div class="flex flex-col justify-center items-center h-full -mt-20 space-y-8">
+                <a href="#services" class="text-2xl font-semibold text-brand-near-black mobile-nav-link">Services</a>
+                <a href="#how-it-works" class="text-2xl font-semibold text-brand-near-black mobile-nav-link">How It Works</a>
+                <a href="#pricing" class="text-2xl font-semibold text-brand-near-black mobile-nav-link">Pricing</a>
+                <button type="button" class="btn-primary px-8 py-4 rounded-lg font-semibold text-lg calendly-trigger mobile-nav-link">Book an Intro Call</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="pt-40 pb-20 px-6 text-center">
+            <div class="container mx-auto max-w-4xl">
+                <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-6 fade-in-on-scroll">Effortless Hosting.<br>Superior Returns.</h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10 fade-in-on-scroll" style="transition-delay: 150ms;">CoHostly provides system-driven management for discerning short-term rental owners in the UK. We handle the operations, you enjoy the rewards.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 fade-in-on-scroll" style="transition-delay: 300ms;">
+                    <button type="button" class="btn-primary w-full sm:w-auto px-8 py-4 rounded-lg font-semibold text-lg calendly-trigger">Book an Intro Call</button>
+                    <a href="#services" class="btn-secondary w-full sm:w-auto px-8 py-4 rounded-lg font-semibold text-lg">View Our Services →</a>
+                </div>
+                <h1>We're launching soon 🚀</h1> 
+            </div>
+            </div>
+        </section>
+
+        <!-- Above-the-Fold Social Proof -->
+        <section class="py-12 px-6">
+            <div class="container mx-auto max-w-3xl text-center fade-in-on-scroll">
+                <p class="text-xl md:text-2xl font-medium leading-relaxed">“I was drowning in guest comms, cleaners and calendar chaos. Cohostly changed everything.”</p>
+                <p class="mt-4 text-gray-500">— Alex T., STR Owner in Bristol</p>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-24 px-6">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center max-w-2xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-extrabold tracking-tighter mb-6 fade-in-on-scroll">Your Property, Perfected in Three Steps.</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 md:gap-12 mt-16">
+                    <div class="fade-in-on-scroll">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-brand-gold/10 mb-5"><svg class="h-6 w-6 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.438.995a6.47 6.47 0 010 1.902c0 .382.145.755.438.995l1.003.827c.48.398.668 1.03.26 1.431l-1.296 2.247a1.125 1.125 0 01-1.37.49l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.063-.374-.313-.686-.645-.87a6.52 6.52 0 01-.22-.127c-.324-.196-.72-.257-1.075-.124l-1.217.456a1.125 1.125 0 01-1.37-.49l-1.296-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.437-.995a6.47 6.47 0 010-1.902c0-.382-.145-.755-.437-.995l-1.004-.827a1.125 1.125 0 01-.26-1.431l1.296-2.247a1.125 1.125 0 011.37-.49l1.217.456c.355.133.75.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.213-1.28z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg></div>
+                        <h3 class="text-xl font-bold mb-3">Onboarding & Optimization</h3>
+                        <p class="text-gray-600">We conduct a full audit of your property and listing, implementing our proven system for maximum visibility and appeal.</p>
+                    </div>
+                    <div class="fade-in-on-scroll" style="transition-delay: 150ms;">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-brand-gold/10 mb-5"><svg class="h-6 w-6 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>
+                        <h3 class="text-xl font-bold mb-3">Seamless Management</h3>
+                        <p class="text-gray-600">From guest communication to cleaner coordination, our UK-based team manages every detail, 24/7.</p>
+                    </div>
+                    <div class="fade-in-on-scroll" style="transition-delay: 300ms;">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-brand-gold/10 mb-5"><svg class="h-6 w-6 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-3.75-2.25M21 18v-6c0-1.104-.896-2-2-2h-6" /></svg></div>
+                        <h3 class="text-xl font-bold mb-3">Reporting & Growth</h3>
+                        <p class="text-gray-600">Receive clear, concise monthly performance reports. We focus on data-driven strategies to continuously increase your revenue.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lead Magnet Section -->
+        <section id="free-score" class="py-24 px-6 bg-brand-light-grey">
+            <div class="container mx-auto max-w-5xl">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-on-scroll">
+                        <h2 class="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4">Is your listing underperforming?</h2>
+                        <p class="text-lg text-gray-600 mb-8">Find out how much money you're leaving on the table. Enter your Airbnb or VRBO link and I'll personally send you a free, no-obligation report on your property's optimization score.</p>
+                        <form action="https://formspree.io/f/your_form_id" method="POST" class="space-y-4"> <!-- Replace with your Formspree ID -->
+                            <input type="text" name="full_name" placeholder="Full Name" required class="w-full bg-white rounded-md py-3 px-4 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-gold">
+                            <input type="email" name="email" placeholder="Email Address" required class="w-full bg-white rounded-md py-3 px-4 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-gold">
+                            <input type="url" name="property_url" placeholder="Your Property Listing URL (Airbnb, VRBO, etc.)" required class="w-full bg-white rounded-md py-3 px-4 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-gold">
+                            <button type="submit" class="btn-primary w-full py-3 rounded-lg font-semibold text-lg">Get My Free Score</button>
+                        </form>
+                    </div>
+                    <div class="fade-in-on-scroll" style="transition-delay: 150ms;">
+                        <!-- Mockup of the report -->
+                        <div class="bg-white rounded-xl p-4 shadow-xl shadow-gray-200/50">
+                            <div class="bg-gray-50 rounded-lg p-6">
+                                <p class="font-bold text-brand-gold">LISTING SCORE: BRISTOL APARTMENT</p>
+                                <div class="flex items-center mt-4">
+                                    <p class="text-6xl font-black mr-4">72</p>
+                                    <p class="text-gray-500">A solid score with significant room for revenue growth.</p>
+                                </div>
+                                <div class="mt-6 space-y-3">
+                                    <div class="flex items-center"><span class="text-green-500 mr-2">✓</span> Pricing Strategy: 85%</div>
+                                    <div class="flex items-center"><span class="text-yellow-500 mr-2">!</span> Photo Quality: 60%</div>
+                                    <div class="flex items-center"><span class="text-red-500 mr-2">✗</span> Headline & SEO: 45%</div>
+                                </div>
+                                <div class="mt-6 p-4 rounded-md bg-gray-200 backdrop-blur-sm relative overflow-hidden">
+                                    <p class="font-semibold">Key Recommendations:</p>
+                                    <ul class="list-disc list-inside text-gray-500 mt-2">
+                                        <li>Adjust weekend pricing by +15%</li>
+                                        <li>Rewrite headline to include key amenities</li>
+                                        <li>Replace first 3 photos with professional shots</li>
+                                    </ul>
+                                    <div class="absolute inset-0 bg-white/50 backdrop-blur-sm"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- "Is This You?" Section -->
+        <section class="py-20 px-6 text-lg text-gray-700 fade-in-on-scroll">
+            <div class="container mx-auto max-w-2xl">
+                <p class="text-center mb-6 font-semibold text-brand-near-black">Sound familiar?</p>
+                <ul class="space-y-4">
+                    <li class="flex items-start"><span class="text-brand-gold mr-3 mt-1">✓</span>You’re still replying to guests at 10pm.</li>
+                    <li class="flex items-start"><span class="text-brand-gold mr-3 mt-1">✓</span>You’ve tried 4 property tools and hated them all.</li>
+                    <li class="flex items-start"><span class="text-brand-gold mr-3 mt-1">✓</span>You’ve not had a proper holiday since launching your Airbnb.</li>
+                </ul>
+                <p class="text-center mt-8 font-semibold"><a href="#roi-calculator" class="text-brand-gold hover:underline">Let’s fix that.</a></p>
+            </div>
+        </section>
+
+        <!-- ROI Calculator Section -->
+        <section id="roi-calculator" class="py-24 px-6 bg-brand-light-grey">
+            <div class="container mx-auto max-w-5xl">
+                <div class="text-center max-w-3xl mx-auto mb-16 fade-in-on-scroll">
+                    <h2 class="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4">You're already paying the cost.</h2>
+                    <p class="text-lg text-gray-600">It’s in stress, time, and missed opportunities. See what you could reclaim in 60 seconds.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12 items-center fade-in-on-scroll">
+                    <!-- Left: Sliders -->
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label for="nightly-rate" class="text-lg font-semibold">Average Nightly Rate</label>
+                                <span id="nightly-rate-value" class="text-xl font-bold text-brand-gold">£150</span>
+                            </div>
+                            <input id="nightly-rate" type="range" min="50" max="500" value="150" step="10" class="w-full" />
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label for="occupancy" class="text-lg font-semibold">Average Occupancy</label>
+                                <span id="occupancy-value" class="text-xl font-bold text-brand-gold">60%</span>
+                            </div>
+                            <input id="occupancy" type="range" min="20" max="95" value="60" step="1" class="w-full" />
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label for="time-spent" class="text-lg font-semibold">Hours Spent Managing Per Week</label>
+                                <span id="time-spent-value" class="text-xl font-bold text-brand-gold">8 hrs</span>
+                            </div>
+                            <input id="time-spent" type="range" min="1" max="40" value="8" step="1" class="w-full" />
+                        </div>
+                    </div>
+                    <!-- Right: Results -->
+                    <div class="bg-white rounded-2xl p-8 border border-gray-200/80 space-y-4">
+                         <div class="text-center">
+                            <div class="text-gray-500 text-sm mb-1">Potential Annual Uplift</div>
+                            <div id="net-uplift" class="text-3xl font-extrabold text-brand-gold">£3,285</div>
+                        </div>
+                         <div class="text-center border-t border-b border-gray-100 py-4">
+                            <div class="text-gray-500 text-sm mb-1">Time You Reclaim Annually</div>
+                            <div id="days-saved" class="text-3xl font-extrabold">17 Days</div>
+                            <p class="text-gray-500 text-sm">(<span id="hours-saved">416</span> hours)</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-gray-500 text-sm mb-1">New Potential Revenue</div>
+                            <div id="potential-gross" class="text-3xl font-extrabold">£39,420</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About the Founder Section -->
+        <section class="py-24 px-6">
+            <div class="container mx-auto max-w-5xl">
+                <div class="grid lg:grid-cols-3 gap-12 items-center">
+                    <div class="lg:col-span-1 fade-in-on-scroll">
+                        <div class="aspect-square bg-gray-200 rounded-2xl flex items-center justify-center overflow-hidden">
+                            <img src="https://l.icdbcdn.com/oh/49274dec-2108-429b-8da4-a4c6c1a24dba.png?f=32&w=392" alt="Dave Thomas, Founder of CoHostly" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2 space-y-4 text-gray-700 leading-relaxed fade-in-on-scroll" style="transition-delay: 150ms;">
+                        <h2 class="text-3xl font-extrabold tracking-tighter text-brand-near-black">Built by a host, for hosts.</h2>
+                        <p class="text-lg">Norton Court Farm is where this all started — a 400-year-old family-run business opened to guests in 1988 by my parents and grandparents. They’re baffled by half the STR tech I talk about these days (and rightfully so).</p>
+                        <p>Today, my brother Bryn, wife Stella, and sister-in-law Laura manage the guest side of things while I handle the systems, tech, and growth. Since stepping in, I’ve been deep in the trenches rebuilding how the business runs — from burst pipes to pricing strategies.</p>
+                        <p>And that’s when I realised: there are the one-man bands, and there are the giants. But not much in between. Cohostly was built for that missing middle — for hosts who care, but can’t do it all alone.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Story Section -->
+        <section class="py-24 px-6 bg-brand-light-grey">
+            <div class="container mx-auto max-w-5xl">
+                <div class="text-center max-w-2xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-extrabold tracking-tighter mb-6 fade-in-on-scroll">Our Proven Results</h2>
+                </div>
+                <div class="mt-16 bg-white rounded-2xl p-8 md:p-12 border border-gray-200/80 shadow-lg shadow-gray-200/30 fade-in-on-scroll">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <p class="font-semibold text-brand-gold mb-2">CASE STUDY: NORTON COURT FARM</p>
+                            <h3 class="text-3xl font-extrabold tracking-tighter mb-4">20% Higher Revenue Per Night</h3>
+                            <p class="text-gray-600 leading-relaxed">By implementing our system at our own five-cottage business, we moved from guesswork to a data-driven strategy. Using PriceLabs, we increased our average nightly rate by 20% in the first three months, while saving over 15 hours of admin work per week. This is the system we deploy for you.</p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <p class="text-4xl font-extrabold text-brand-gold">+20%</p>
+                                <p class="text-sm text-gray-500">RevPAN Increase</p>
+                            </div>
+                            <div>
+                                <p class="text-4xl font-extrabold text-brand-gold">+15</p>
+                                <p class="text-sm text-gray-500">Hours Saved Weekly</p>
+                            </div>
+                            <div>
+                                <p class="text-4xl font-extrabold text-brand-gold">4.9★</p>
+                                <p class="text-sm text-gray-500">Guest Rating</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regulatory Shield Section -->
+        <section class="py-24 px-6">
+            <div class="container mx-auto max-w-3xl text-center">
+                <div class="fade-in-on-scroll">
+                    <svg class="h-12 w-12 mx-auto mb-6 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <h2 class="text-3xl font-extrabold tracking-tighter mb-4">Navigate Regulations with Confidence.</h2>
+                    <p class="text-lg text-gray-600 leading-relaxed">The new 2025 national STR registration scheme and tax changes are complex. We handle all regulatory compliance as a core part of our service, ensuring you avoid fines and can focus on profits, not paperwork.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-24 px-6 bg-brand-light-grey">
+            <div class="container mx-auto max-w-5xl">
+                <div class="text-center max-w-2xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-extrabold tracking-tighter mb-6 fade-in-on-scroll">Simple, Transparent Pricing.</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-16">
+                    <div class="bg-white rounded-2xl p-8 border border-gray-200/80 shadow-lg shadow-gray-200/30 fade-in-on-scroll">
+                        <h3 class="text-xl font-bold text-brand-gold mb-2">Growth & Management</h3>
+                        <p class="text-gray-600 mb-6">For owners who want to maximize revenue with zero effort.</p>
+                        <div class="text-5xl font-extrabold mb-6">From 15%<span class="text-lg font-medium text-gray-500">/booking</span></div>
+                        <ul class="space-y-3 mb-8 text-gray-700">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-gold mr-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Everything in Core Ops, plus:</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-gold mr-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Dynamic Pricing Optimization</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-gold mr-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Direct Booking Strategy</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-gold mr-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Quarterly Performance Reviews</li>
+                        </ul>
+                        <button type="button" class="btn-primary w-full block text-center py-3 rounded-lg font-semibold calendly-trigger">Choose Growth</button>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 border border-gray-200/80 fade-in-on-scroll" style="transition-delay: 150ms;">
+                        <h3 class="text-xl font-bold mb-2">Core Ops</h3>
+                        <p class="text-gray-600 mb-6">For experienced owners who want to delegate daily tasks.</p>
+                        <div class="text-5xl font-extrabold mb-6">From £199<span class="text-lg font-medium text-gray-500">/month</span></div>
+                        <ul class="space-y-3 mb-8 text-gray-700">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-gold mr-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>24/7 Guest Communication</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-gold mr-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Cleaner & Maintenance Coordination</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-gold mr-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Booking & Calendar Management</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-gold mr-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Monthly Performance Reports</li>
+                        </ul>
+                        <button type="button" class="btn-secondary w-full block text-center py-3 rounded-lg font-semibold calendly-trigger">Choose Core Ops</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="py-24 px-6">
+            <div class="container mx-auto max-w-2xl text-center fade-in-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4">We're only onboarding <span id="spots-left" class="text-brand-gold">5</span> founding partners.</h2>
+                <p class="text-lg text-gray-600 mb-8">If you're ready to reduce stress and grow smarter, now’s the time.</p>
+                <button type="button" class="btn-primary inline-block px-10 py-5 rounded-lg font-semibold text-xl calendly-trigger">Book Your Free Intro Call</button>
+                <p class="text-gray-500 mt-6 max-w-md mx-auto">Imagine going an entire week without a single guest message, task reminder, or cleaner panic text. That’s the goal.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-near-black text-white py-16 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-1">
+                    <h3 class="text-3xl font-extrabold mb-2">CoHostly</h3>
+                    <p class="text-sm text-gray-400 tracking-wider">BOOKED. COORDINATED. DELIVERED.</p>
+                </div>
+                <div class="md:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="font-semibold mb-4 text-gray-300">Navigation</h4>
+                        <ul class="space-y-2 text-gray-400">
+                            <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+                            <li><a href="#pricing" class="hover:text-white transition-colors">Pricing</a></li>
+                            <li><a href="#how-it-works" class="hover:text-white transition-colors">How It Works</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4 text-gray-300">Legal</h4>
+                        <ul class="space-y-2 text-gray-400">
+                            <li><a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4 text-gray-300">Connect</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white transition-transform hover:-translate-y-1">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
+                <p>&copy; 2025 CoHostly LTD. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                // --- 1. Header & Mobile Nav Logic ---
+                const header = document.getElementById('header');
+                const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+                const mobileNavClose = document.getElementById('mobile-nav-close');
+                const mobileNav = document.getElementById('mobile-nav');
+                const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+                if (header) {
+                    window.addEventListener('scroll', () => {
+                        header.classList.toggle('header-scrolled', window.scrollY > 50);
+                    });
+                }
+                
+                function toggleMobileNav() {
+                    document.body.classList.toggle('overflow-hidden');
+                    mobileNav.classList.toggle('translate-x-full');
+                    mobileNav.classList.toggle('opacity-0');
+                }
+
+                if (mobileNavToggle) {
+                    mobileNavToggle.addEventListener('click', toggleMobileNav);
+                    mobileNavClose.addEventListener('click', toggleMobileNav);
+                }
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (document.body.classList.contains('overflow-hidden')) {
+                            toggleMobileNav();
+                        }
+                    });
+                });
+
+                // --- 2. Animate Elements on Scroll ---
+                const scrollElements = document.querySelectorAll('.fade-in-on-scroll');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                scrollElements.forEach(el => observer.observe(el));
+
+                // --- 3. ROI Calculator Logic ---
+                const nightlyRateSlider = document.getElementById('nightly-rate');
+                const occupancySlider = document.getElementById('occupancy');
+                const timeSpentSlider = document.getElementById('time-spent');
+                
+                function updateROICalculator() {
+                    if (!nightlyRateSlider) return;
+                    const nightlyRate = parseInt(nightlyRateSlider.value, 10);
+                    const occupancy = parseInt(occupancySlider.value, 10);
+                    const timeSpent = parseInt(timeSpentSlider.value, 10);
+
+                    document.getElementById('nightly-rate-value').textContent = '£' + nightlyRate;
+                    document.getElementById('occupancy-value').textContent = occupancy + '%';
+                    document.getElementById('time-spent-value').textContent = timeSpent + ' hrs';
+
+                    const annualHoursSaved = timeSpent * 52;
+                    const daysSaved = Math.round(annualHoursSaved / 24);
+                    
+                    document.getElementById('hours-saved').textContent = annualHoursSaved.toLocaleString();
+                    document.getElementById('days-saved').textContent = daysSaved + ' Days';
+                    
+                    const bookedDays = 365 * (occupancy / 100);
+                    const currentAnnual = nightlyRate * bookedDays;
+                    const potentialGross = currentAnnual * 1.20;
+                    const uplift = potentialGross - currentAnnual;
+                    const cohostlyFee = uplift * 0.50;
+                    const netUplift = uplift - cohostlyFee;
+
+                    document.getElementById('potential-gross').textContent = '£' + potentialGross.toLocaleString('en-GB', {maximumFractionDigits: 0});
+                    document.getElementById('net-uplift').textContent = '£' + netUplift.toLocaleString('en-GB', {maximumFractionDigits: 0});
+                }
+                
+                if (nightlyRateSlider) {
+                    [nightlyRateSlider, occupancySlider, timeSpentSlider].forEach(el => {
+                        el.addEventListener('input', updateROICalculator);
+                    });
+                    updateROICalculator();
+                }
+
+                // --- 4. Calendly Modal Logic ---
+                const modal = document.getElementById('calendly-modal');
+                const modalTriggers = document.querySelectorAll('.calendly-trigger');
+                
+                window.openCalendlyModal = function() {
+                    if (!modal) return;
+                    modal.classList.remove('hidden');
+                    document.body.classList.add('overflow-hidden');
+                    setTimeout(() => {
+                        modal.classList.add('opacity-100');
+                        modal.querySelector('[role="dialog"]').classList.remove('scale-95');
+                    }, 10);
+                }
+
+                window.closeCalendlyModal = function() {
+                    if (!modal) return;
+                    modal.classList.remove('opacity-100');
+                    modal.querySelector('[role="dialog"]').classList.add('scale-95');
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                        document.body.classList.remove('overflow-hidden');
+                    }, 300);
+                }
+
+                modalTriggers.forEach(btn => btn.addEventListener('click', openCalendlyModal));
+                document.addEventListener('keydown', e => {
+                    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                        closeCalendlyModal();
+                    }
+                });
+
+                // --- 5. Feature Showcase Dynamic SVGs ---
+                const graphicContainer = document.getElementById('feature-graphic-container');
+                
+                function injectFeatureSVG(feature) {
+                    if (!graphicContainer) return;
+                    const template = document.getElementById(`svg-${feature}`);
+                    if (template) {
+                        graphicContainer.style.opacity = '0';
+                        setTimeout(() => {
+                            graphicContainer.innerHTML = template.innerHTML;
+                            graphicContainer.style.opacity = '1';
+                        }, 200);
+                    }
+                }
+
+                window.selectFeature = function(element, feature) {
+                    document.querySelectorAll('.feature-tab').forEach(tab => tab.classList.remove('active'));
+                    element.classList.add('active');
+                    injectFeatureSVG(feature);
+                }
+                
+                if (graphicContainer) {
+                    injectFeatureSVG('pricing');
+                }
+
+                // --- 6. Dynamic Spots Left Counter ---
+                const spotsLeftEl = document.getElementById('spots-left');
+                if (spotsLeftEl) {
+                    spotsLeftEl.textContent = '5';
+                }
+
+            } catch (e) {
+                console.error("An error occurred during site initialization:", e);
+            }
+        });
+    </script>
+</body>
+</html>
